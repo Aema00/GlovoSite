@@ -4,6 +4,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import CoursesViewSet
 
+
 router = routers.SimpleRouter()
 router.register(r'user', UserProfileViewSet, basename='users')
 router.register(r'teacher', TeacherViewSet, basename='teachers')
@@ -20,9 +21,8 @@ router.register(r'certificate', CertificateViewSet, basename='certificates')
 router.register(r'review', ReviewViewSet, basename='reviews')
 
 urlpatterns = [
-    path('', include(router.urls)),
     path('api/', include(router.urls)),
 ]
 
-router = DefaultRouter()
+
 

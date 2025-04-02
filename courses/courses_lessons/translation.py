@@ -8,7 +8,7 @@ class CoursesTranslationOptions(TranslationOptions):
 
 
 @register(Lessons)
-class LessonTranslationOptions(TranslationOptions):
+class LessonsTranslationOptions(TranslationOptions):
     fields = ('name_lessons', 'content')
 
 

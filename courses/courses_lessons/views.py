@@ -2,13 +2,19 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from rest_framework.filters import SearchFilter, OrderingFilter
 
+
+
+from .pagination import CoursesPagination
+
 from .filters import *
 from .serializers import *
+
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
+
 
 
 class TeacherViewSet(viewsets.ModelViewSet):
@@ -38,6 +44,7 @@ class CoursesViewSet(viewsets.ModelViewSet):
     filters_class = CoursesFilter
     search_fields = ['courses_name']
     ordering_fields = ['price']
+    pagination_class = CoursesPagination
 
 
 class LessonsViewSet(viewsets.ModelViewSet):
@@ -76,4 +83,8 @@ class ReviewViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filters_class = ReviewFilter
     search_fields = ['user']
-    ordering_fields = ['rating']
+
+
+
+
+

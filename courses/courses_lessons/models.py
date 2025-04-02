@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 USER_ROLE = (
     ('client', 'client'),
     ('teacher', 'teacher'),
@@ -56,6 +57,8 @@ class Courses(models.Model):
     created_by = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
+    quantity = models.IntegerField(blank=True, null=True)
+
 
     def __str__(self):
         return self.courses_name
@@ -119,3 +122,6 @@ class Review(models.Model):
     courses = models.ForeignKey(Courses, on_delete=models.CASCADE)
     rating = models.IntegerField(choices=[(i, str(i)) for i in range(1, 6)])
     comment = models.TextField()
+
+
+
